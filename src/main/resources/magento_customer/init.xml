@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="init" onError="fault"
+	xmlns="http://ws.apache.org/ns/synapse">
+	<parameter name="username" description="password of the user used to log in to JIRA." />
+	<parameter name="password"
+		description="username of the user used to log in to JIRA." />
+	<parameter name="uri"
+		description="URI of the Magento instance." />
+
+
+	<sequence>
+		<property name="magento.username" expression="$func:username" />
+		<property name="magento.password" expression="$func:password" />
+		<property name="magento.for.auth"
+			expression="fn:concat($ctx:magento.username,':',$ctx:magento.password)" />
+		<property name="uri.var.magento.url" expression="$func:uri" />
+		<property name="Authorization"
+			expression="fn:concat('Basic ', base64Encode($ctx:magento.for.auth))"
+			scope="transport" />
+	</sequence>
+</template>

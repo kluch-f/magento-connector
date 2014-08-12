@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="magento_customer" type="synapse/template">
+	<subComponents>
+		<component name="getCustomers">
+			<file>getCustomers.xml</file>
+			<description>Get list of customers</description>
+		</component>
+	</subComponents>
+</component>
